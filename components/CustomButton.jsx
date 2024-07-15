@@ -11,7 +11,7 @@ const CustomButton = ({ title, handlePress, containerStyles, textStyles, isLoadi
             disabled={isLoading}
             className={clsx("bg-secondary-200 rounded-xl min-h-[62px] justify-center items-center", containerStyles, { isLoading: 'opacity-50' })}
         >
-            <Text className={clsx("text-primary font-psemibold text-lg", textStyles)} >{title}</Text>
+            <Text className={clsx("text-primary font-psemibold text-lg", textStyles)} >{isLoading ? "Loading..." : title}</Text>
         </TouchableOpacity>
     )
 }
