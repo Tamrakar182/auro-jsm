@@ -64,11 +64,12 @@ const Profile = () => {
                 title={posts.length || 0}
                 subtitle="Posts"
                 titleStyles="text-lg"
+                containerStyles="mr-4"
               />
 
               <InfoBox
-                title="1.2k"
-                subtitle="Followers"
+                title={user.likedVideos.length}
+                subtitle="Liked Videos"
                 titleStyles="text-lg"
               />
             </View>
