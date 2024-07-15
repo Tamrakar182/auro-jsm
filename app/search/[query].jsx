@@ -7,6 +7,7 @@ import { searchPosts } from '../../lib/appwrite'
 import useAppwrite from '../../lib/useAppwrite'
 import VideoCard from '../../components/VideoCard'
 import { useLocalSearchParams } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 
 const Search = () => {
   const { query } = useLocalSearchParams();
@@ -46,6 +47,7 @@ const Search = () => {
           />
         )}
       />
+      <StatusBar backgroundColor='#161622' style="light" />
     </SafeAreaView>
   )
 }

@@ -9,6 +9,7 @@ import { useGlobalContext } from '../../context/GlobalProvider'
 import { icons } from '../../constants'
 import InfoBox from '../../components/InfoBox'
 import { router } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 
 const Profile = () => {
   const { user, setUser, setIsLoggedIn } = useGlobalContext();
@@ -83,6 +84,8 @@ const Profile = () => {
           />
         )}
       />
+      <StatusBar backgroundColor='#161622' style="light" />
+
     </SafeAreaView>
   )
 }

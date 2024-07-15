@@ -9,17 +9,18 @@ import { getAllPosts, getLatestPosts } from '../../lib/appwrite'
 import useAppwrite from '../../lib/useAppwrite'
 import VideoCard from '../../components/VideoCard'
 import { useGlobalContext } from '../../context/GlobalProvider'
+import { StatusBar } from 'expo-status-bar'
 
 const Home = () => {
   const { data: posts, refetch } = useAppwrite(getAllPosts);
-  const { data: latestPosts } = useAppwrite(getLatestPosts);
+  const { data: latestPosts, refetch: updateLatest } = useAppwrite(getLatestPosts);
   const { user } = useGlobalContext();
 
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
     setRefreshing(true)
-    await refetch()
+    await Promise.all([refetch(), updateLatest()])
     setRefreshing(false)
   }
 
@@ -74,6 +75,7 @@ const Home = () => {
         )}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       />
+        <StatusBar backgroundColor='#161622' style="light" />
     </SafeAreaView>
   )
 }

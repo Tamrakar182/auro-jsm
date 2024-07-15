@@ -7,6 +7,7 @@ import CustomButton from '../../components/CustomButton'
 import { Link, router } from 'expo-router'
 import { getCurrentUser, signIn } from '../../lib/appwrite'
 import { useGlobalContext } from '../../context/GlobalProvider'
+import { StatusBar } from 'expo-status-bar'
 
 const SignIn = () => {
   const { setUser, setIsLoggedIn } = useGlobalContext();
@@ -83,6 +84,7 @@ const SignIn = () => {
 
 
         </View>
+        <StatusBar backgroundColor='#161622' style="light" />
       </ScrollView>
     </SafeAreaView>
   )

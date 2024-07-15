@@ -7,6 +7,7 @@ import CustomButton from '../../components/CustomButton'
 import { Link, router } from 'expo-router'
 import { createUser } from '../../lib/appwrite'
 import { useGlobalContext } from '../../context/GlobalProvider'
+import { StatusBar } from 'expo-status-bar'
 
 const SignUp = () => {
   const { setUser, setIsLoggedIn } = useGlobalContext();
@@ -25,7 +26,7 @@ const SignUp = () => {
     }
 
     setisSubmitting(true);
-    
+
     try {
       const result = await createUser(form.email, form.password, form.userName);
       setUser(result);
@@ -94,6 +95,7 @@ const SignUp = () => {
 
 
         </View>
+        <StatusBar backgroundColor='#161622' style="light" />
       </ScrollView>
     </SafeAreaView>
   )

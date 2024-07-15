@@ -1,12 +1,11 @@
-import { View, Text, FlatList, Image, RefreshControl, Alert } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import { View, Text, FlatList } from 'react-native'
+import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import SearchInput from '../../components/SearchInput'
 import EmptyState from '../../components/EmptyState'
-import { getUserLikedPosts } from '../../lib/appwrite'
-import useAppwrite from '../../lib/useAppwrite'
 import VideoCard from '../../components/VideoCard'
 import { useGlobalContext } from '../../context/GlobalProvider'
+import { StatusBar } from 'expo-status-bar'
 
 const Bookmark = () => {
   const { user } = useGlobalContext();
@@ -14,7 +13,7 @@ const Bookmark = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
-        data={user.likedVideos}
+        data={user.likedVideos || []}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
           <VideoCard video={item} />
@@ -36,6 +35,8 @@ const Bookmark = () => {
           />
         )}
       />
+      <StatusBar backgroundColor='#161622' style="light" />
+
     </SafeAreaView>
   )
 }
